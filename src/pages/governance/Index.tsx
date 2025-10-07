@@ -12,7 +12,7 @@ const sections = [
     title: "Security Management",
     description: "IAM and security posture",
     icon: Shield,
-    href: "/governance/security",
+    href: "/governance/security-management",
   },
   {
     title: "Cost Management",
@@ -24,13 +24,13 @@ const sections = [
     title: "Users & Organizations",
     description: "Manage access and roles",
     icon: Users,
-    href: "/governance/users",
+    href: "/governance/users-organizations",
   },
   {
     title: "Audit & Compliance",
     description: "Activity logs and reports",
     icon: FileCheck,
-    href: "/governance/audit",
+    href: "/governance/audit-compliance",
   },
 ];
 

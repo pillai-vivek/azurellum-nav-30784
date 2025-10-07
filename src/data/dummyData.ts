@@ -317,3 +317,60 @@ export const departmentCosts = [
   { department: "Marketing", cost: 1800, percentage: 18 },
   { department: "Operations", cost: 1400, percentage: 14 },
 ];
+
+// Security Management Data
+export const securityMetrics = {
+  totalRoles: 45,
+  totalKeys: 23,
+  issuesFound: 7,
+  securityScore: 87,
+};
+
+export const vulnerabilities = [
+  { id: "vuln-001", title: "Unencrypted S3 Bucket", severity: "critical", resource: "app-storage-bucket", status: "Open" },
+  { id: "vuln-002", title: "Weak IAM Policy", severity: "high", resource: "prod-web-server-01", status: "In Progress" },
+  { id: "vuln-003", title: "Outdated SSL Certificate", severity: "medium", resource: "prod-load-balancer", status: "Open" },
+  { id: "vuln-004", title: "Missing MFA", severity: "high", resource: "admin-user-group", status: "Resolved" },
+];
+
+// Cost Management Data
+export const approvalWorkflows = [
+  { id: "wf-001", rule: "Spending > $1000", approver: "Sarah Chen", status: "Active", lastTriggered: "2024-01-15" },
+  { id: "wf-002", rule: "New Resource Creation", approver: "Michael Rodriguez", status: "Active", lastTriggered: "2024-01-14" },
+  { id: "wf-003", rule: "Resource Termination", approver: "Sarah Chen", status: "Active", lastTriggered: "2024-01-13" },
+];
+
+// Users & Organizations Data
+export const organizationUsers = [
+  { id: "user-001", name: "Sarah Chen", email: "sarah.chen@company.com", role: "Admin", department: "Engineering", lastActive: "2024-01-15 14:23" },
+  { id: "user-002", name: "Michael Rodriguez", email: "m.rodriguez@company.com", role: "FinOps", department: "Finance", lastActive: "2024-01-15 11:45" },
+  { id: "user-003", name: "Emily Watson", email: "e.watson@company.com", role: "Viewer", department: "Operations", lastActive: "2024-01-14 16:32" },
+  { id: "user-004", name: "David Kim", email: "d.kim@company.com", role: "Admin", department: "Engineering", lastActive: "2024-01-15 09:15" },
+  { id: "user-005", name: "Lisa Anderson", email: "l.anderson@company.com", role: "FinOps", department: "Finance", lastActive: "2024-01-13 13:22" },
+];
+
+export const auditTimeline = [
+  { id: "audit-001", timestamp: "2024-01-15 14:23:45", user: "Sarah Chen", action: "Deployed stack: prod-web-server", status: "success", details: "Successfully deployed EC2 instance with auto-scaling" },
+  { id: "audit-002", timestamp: "2024-01-15 11:45:12", user: "Michael Rodriguez", action: "Updated budget: Production Environment", status: "success", details: "Increased budget limit from $4000 to $5000" },
+  { id: "audit-003", timestamp: "2024-01-14 16:32:58", user: "Emily Watson", action: "Viewed resource: postgres-prod", status: "success", details: "Accessed database configuration" },
+  { id: "audit-004", timestamp: "2024-01-14 10:15:33", user: "David Kim", action: "Created new IAM role", status: "success", details: "Added read-only role for analytics team" },
+  { id: "audit-005", timestamp: "2024-01-13 13:22:11", user: "Lisa Anderson", action: "Terminated idle instance", status: "success", details: "Removed i-0abc123def456 to reduce costs" },
+];
+
+// API & Access Management Data
+export const apiTokens = [
+  { id: "token-001", name: "Production API Key", scope: "Full Access", created: "2024-01-01", lastUsed: "2024-01-15", status: "Active" },
+  { id: "token-002", name: "CI/CD Pipeline", scope: "Deploy Only", created: "2023-12-15", lastUsed: "2024-01-15", status: "Active" },
+  { id: "token-003", name: "Monitoring Service", scope: "Read Only", created: "2023-11-20", lastUsed: "2024-01-14", status: "Active" },
+  { id: "token-004", name: "Legacy Integration", scope: "Limited", created: "2023-08-10", lastUsed: "2023-12-01", status: "Expired" },
+];
+
+// System Configuration Data
+export const systemConfig = {
+  terraformBackend: "https://terraform.example.com/api",
+  ansibleBackend: "https://ansible.example.com/api",
+  backupEnabled: true,
+  logRetention: "90",
+  defaultRegion: "us-east-1",
+  notificationEmail: "admin@company.com",
+};

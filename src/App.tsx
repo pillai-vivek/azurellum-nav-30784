@@ -21,8 +21,15 @@ import Budgets from "./pages/finops/Budgets";
 import Chargeback from "./pages/finops/Chargeback";
 import GovernanceIndex from "./pages/governance/Index";
 import PolicyManagement from "./pages/governance/PolicyManagement";
+import SecurityManagement from "./pages/governance/SecurityManagement";
+import CostManagement from "./pages/governance/CostManagement";
+import UsersOrganizations from "./pages/governance/UsersOrganizations";
+import AuditCompliance from "./pages/governance/AuditCompliance";
 import SettingsIndex from "./pages/settings/Index";
 import Integrations from "./pages/settings/Integrations";
+import ApiAccessManagement from "./pages/settings/ApiAccessManagement";
+import ThemePreferences from "./pages/settings/ThemePreferences";
+import SystemConfiguration from "./pages/settings/SystemConfiguration";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -60,10 +67,17 @@ const App = () => (
           {/* Governance Routes */}
           <Route path="/governance" element={<DashboardLayout><GovernanceIndex /></DashboardLayout>} />
           <Route path="/governance/policy-management" element={<DashboardLayout><PolicyManagement /></DashboardLayout>} />
+          <Route path="/governance/security-management" element={<DashboardLayout><SecurityManagement /></DashboardLayout>} />
+          <Route path="/governance/cost-management" element={<DashboardLayout><CostManagement /></DashboardLayout>} />
+          <Route path="/governance/users-organizations" element={<DashboardLayout><UsersOrganizations /></DashboardLayout>} />
+          <Route path="/governance/audit-compliance" element={<DashboardLayout><AuditCompliance /></DashboardLayout>} />
           
           {/* Settings Routes */}
           <Route path="/settings" element={<DashboardLayout><SettingsIndex /></DashboardLayout>} />
           <Route path="/settings/integrations" element={<DashboardLayout><Integrations /></DashboardLayout>} />
+          <Route path="/settings/api-access" element={<DashboardLayout><ApiAccessManagement /></DashboardLayout>} />
+          <Route path="/settings/theme-preferences" element={<DashboardLayout><ThemePreferences /></DashboardLayout>} />
+          <Route path="/settings/system-configuration" element={<DashboardLayout><SystemConfiguration /></DashboardLayout>} />
 
           {/* Catch all */}
           <Route path="*" element={<NotFound />} />

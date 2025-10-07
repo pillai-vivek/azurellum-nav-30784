@@ -12,19 +12,19 @@ const sections = [
     title: "API & Access Management",
     description: "Generate and manage API tokens",
     icon: Key,
-    href: "/settings/api",
+    href: "/settings/api-access",
   },
   {
     title: "Theme & Preferences",
     description: "Customize your experience",
     icon: Palette,
-    href: "/settings/preferences",
+    href: "/settings/theme-preferences",
   },
   {
     title: "System Configuration",
     description: "Platform-wide settings",
     icon: Settings2,
-    href: "/settings/system",
+    href: "/settings/system-configuration",
   },
 ];
 
