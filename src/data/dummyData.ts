@@ -1,7 +1,7 @@
 export const cloudProviders = [
-  { id: "aws", name: "Amazon Web Services", logo: "☁️", color: "#FF9900" },
-  { id: "azure", name: "Microsoft Azure", logo: "⛅", color: "#0078D4" },
-  { id: "gcp", name: "Google Cloud Platform", logo: "☁️", color: "#4285F4" },
+  { id: "aws", name: "Amazon Web Services", logo: "/aws.svg",},
+  { id: "azure", name: "Microsoft Azure", logo: "/azure.svg",},
+  { id: "gcp", name: "Google Cloud Platform", logo: "/gcp.svg",},
 ];
 
 export const dailySpendData = [

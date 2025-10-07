@@ -53,7 +53,8 @@ export default function CloudProviderConfig() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"> */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           {cloudProviders.map((provider, index) => (
             <motion.div
               key={provider.id}
@@ -67,7 +68,11 @@ export default function CloudProviderConfig() {
                 onClick={() => setSelectedProvider(provider.id)}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="text-5xl mb-4">{provider.logo}</div>
+                  <img
+                    src={provider.logo}
+                    alt={provider.name}
+                    className="h-10 mx-auto mb-2"
+                  />
                   <h3 className="font-semibold text-sm">{provider.name}</h3>
                 </CardContent>
               </Card>
@@ -81,9 +86,9 @@ export default function CloudProviderConfig() {
           transition={{ delay: 0.4, duration: 0.3 }}
         >
           <Card className="border-2 border-dashed border-border hover:border-primary cursor-pointer hover:shadow-lg transition-all">
-            <CardContent className="p-8 text-center">
-              <Plus className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="font-semibold mb-2">Create New Account</h3>
+            <CardContent className="p-3 text-center">
+              <Plus className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+              <h3 className="font-semibold mb-1">Create New Account</h3>
               <p className="text-sm text-muted-foreground">
                 Don't have a cloud provider? Create one
               </p>

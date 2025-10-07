@@ -104,7 +104,12 @@ export default function Provisioning() {
                         className="cursor-pointer hover:border-primary transition-all"
                       >
                         <CardContent className="p-6 text-center">
-                          <div className="text-4xl mb-2">{provider.logo}</div>
+                          {/* <div className="text-4xl mb-2">{provider.logo}</div> */}
+                          <img
+                            src={provider.logo}
+                            alt={provider.name}
+                            className="h-14 mx-auto mb-2"
+                          />
                           <p className="font-semibold">{provider.name}</p>
                         </CardContent>
                       </Card>
