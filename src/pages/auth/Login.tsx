@@ -35,6 +35,31 @@ export default function Login() {
     }
   };
 
+  const createOrLoginTestUser = async () => {
+    const testEmail = "test@cloudops.com";
+    const testPassword = "Test@123456";
+    try {
+      const { error: signInError } = await supabase.auth.signInWithPassword({ email: testEmail, password: testPassword });
+      if (!signInError) {
+        toast.success("Logged in with test account");
+        navigate("/dashboard");
+        return;
+      }
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: testEmail,
+        password: testPassword,
+        options: { data: { full_name: "Test User" }, emailRedirectTo: `${window.location.origin}/dashboard` }
+      });
+      if (signUpError) throw signUpError;
+      const { error: signInAfter } = await supabase.auth.signInWithPassword({ email: testEmail, password: testPassword });
+      if (signInAfter) throw signInAfter;
+      toast.success("Test account ready! Redirecting...");
+      navigate("/dashboard");
+    } catch (err: any) {
+      toast.error(err.message || "Could not use test account");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-muted via-background to-muted p-4">
       <motion.div
@@ -96,6 +121,15 @@ export default function Login() {
                 onClick={() => navigate("/signup")}
               >
                 Create Account
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                className="w-full"
+                onClick={createOrLoginTestUser}
+                aria-label="Use Test Account"
+              >
+                Use Test Account
               </Button>
             </form>
           </CardContent>
