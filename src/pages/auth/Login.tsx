@@ -44,16 +44,22 @@ export default function Login() {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
             <span className="text-4xl">☁️</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">CloudOps Platform</h1>
           <p className="text-muted-foreground mt-2">Sign in to your account</p>
+          
+          <div className="mt-4 p-3 bg-muted/50 rounded-lg border border-border">
+            <p className="text-xs text-muted-foreground mb-1">Test Account:</p>
+            <p className="text-sm font-mono"><strong>Email:</strong> test@cloudops.com</p>
+            <p className="text-sm font-mono"><strong>Password:</strong> Test@123456</p>
+          </div>
         </div>
 
-        <Card className="border-border shadow-xl">
+        <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
           <CardHeader>
-            <CardTitle>Welcome back</CardTitle>
+            <CardTitle className="text-2xl">Welcome back</CardTitle>
             <CardDescription>Enter your credentials to access your account</CardDescription>
           </CardHeader>
           <CardContent>

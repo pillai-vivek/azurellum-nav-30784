@@ -57,7 +57,7 @@ export default function Signup() {
         className="w-full max-w-2xl"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
             <span className="text-4xl">☁️</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">Create Your Account</h1>
@@ -65,9 +65,9 @@ export default function Signup() {
         </div>
 
         {step === 1 ? (
-          <Card className="border-border shadow-xl">
+          <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
             <CardHeader>
-              <CardTitle>Account Details</CardTitle>
+              <CardTitle className="text-2xl">Account Details</CardTitle>
               <CardDescription>Enter your information to get started</CardDescription>
             </CardHeader>
             <CardContent>
@@ -120,9 +120,9 @@ export default function Signup() {
           </Card>
         ) : (
           <div className="space-y-6">
-            <Card className="border-border shadow-xl">
+            <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
               <CardHeader>
-                <CardTitle>Choose Account Type</CardTitle>
+                <CardTitle className="text-2xl">Choose Account Type</CardTitle>
                 <CardDescription>Select how you want to use CloudOps</CardDescription>
               </CardHeader>
             </Card>
