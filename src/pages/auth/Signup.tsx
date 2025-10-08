@@ -6,8 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { User, Building2 } from "lucide-react";
-import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -15,33 +13,10 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleStep1 = async (e: React.FormEvent) => {
+  const handleStep1 = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
-          data: {
-            full_name: name,
-          },
-        },
-      });
-
-      if (error) throw error;
-
-      toast.success("Account created successfully!");
-      setStep(2);
-    } catch (error: any) {
-      toast.error(error.message || "Failed to create account. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    setStep(2);
   };
 
   const handleAccountType = (type: "user" | "organization") => {
@@ -57,7 +32,7 @@ export default function Signup() {
         className="w-full max-w-2xl"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4">
             <span className="text-4xl">☁️</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">Create Your Account</h1>
@@ -65,9 +40,9 @@ export default function Signup() {
         </div>
 
         {step === 1 ? (
-          <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
+          <Card className="border-border shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl">Account Details</CardTitle>
+              <CardTitle>Account Details</CardTitle>
               <CardDescription>Enter your information to get started</CardDescription>
             </CardHeader>
             <CardContent>
@@ -104,8 +79,8 @@ export default function Signup() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Creating Account..." : "Continue"}
+                <Button type="submit" className="w-full">
+                  Continue
                 </Button>
                 <Button
                   type="button"
@@ -120,9 +95,9 @@ export default function Signup() {
           </Card>
         ) : (
           <div className="space-y-6">
-            <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
+            <Card className="border-border shadow-xl">
               <CardHeader>
-                <CardTitle className="text-2xl">Choose Account Type</CardTitle>
+                <CardTitle>Choose Account Type</CardTitle>
                 <CardDescription>Select how you want to use CloudOps</CardDescription>
               </CardHeader>
             </Card>

@@ -6,58 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-
-      toast.success("Login successful!");
-      navigate("/dashboard");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to login. Please check your credentials.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const createOrLoginTestUser = async () => {
-    const testEmail = "test@cloudops.com";
-    const testPassword = "Test@123456";
-    try {
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email: testEmail, password: testPassword });
-      if (!signInError) {
-        toast.success("Logged in with test account");
-        navigate("/dashboard");
-        return;
-      }
-      const { error: signUpError } = await supabase.auth.signUp({
-        email: testEmail,
-        password: testPassword,
-        options: { data: { full_name: "Test User" }, emailRedirectTo: `${window.location.origin}/dashboard` }
-      });
-      if (signUpError) throw signUpError;
-      const { error: signInAfter } = await supabase.auth.signInWithPassword({ email: testEmail, password: testPassword });
-      if (signInAfter) throw signInAfter;
-      toast.success("Test account ready! Redirecting...");
-      navigate("/dashboard");
-    } catch (err: any) {
-      toast.error(err.message || "Could not use test account");
-    }
+    toast.success("Login successful!");
+    navigate("/dashboard");
   };
 
   return (
@@ -69,22 +27,16 @@ export default function Login() {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4">
             <span className="text-4xl">☁️</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">CloudOps Platform</h1>
           <p className="text-muted-foreground mt-2">Sign in to your account</p>
-          
-          <div className="mt-4 p-3 bg-muted/50 rounded-lg border border-border">
-            <p className="text-xs text-muted-foreground mb-1">Test Account:</p>
-            <p className="text-sm font-mono"><strong>Email:</strong> test@cloudops.com</p>
-            <p className="text-sm font-mono"><strong>Password:</strong> Test@123456</p>
-          </div>
         </div>
 
-        <Card className="border-border shadow-xl backdrop-blur-sm bg-card/95">
+        <Card className="border-border shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl">Welcome back</CardTitle>
+            <CardTitle>Welcome back</CardTitle>
             <CardDescription>Enter your credentials to access your account</CardDescription>
           </CardHeader>
           <CardContent>
@@ -111,8 +63,8 @@ export default function Login() {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Signing In..." : "Sign In"}
+              <Button type="submit" className="w-full">
+                Sign In
               </Button>
               <Button
                 type="button"
@@ -121,15 +73,6 @@ export default function Login() {
                 onClick={() => navigate("/signup")}
               >
                 Create Account
-              </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                className="w-full"
-                onClick={createOrLoginTestUser}
-                aria-label="Use Test Account"
-              >
-                Use Test Account
               </Button>
             </form>
           </CardContent>
